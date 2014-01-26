@@ -301,6 +301,10 @@ installJqueryAjaxSuccessPageUpdateTrigger = ->
     jQuery(document).on 'ajaxSuccess', (event, xhr, settings) ->
       return unless jQuery.trim xhr.responseText
       triggerEvent 'page:update'
+  else if typeof Zepto isnt 'undefined'
+    Zepto(document).on 'ajaxSuccess', (event, xhr, settings) ->
+      return unless Zepto.trim xhr.responseText
+      triggerEvent 'page:update'
 
 installHistoryChangeHandler = (event) ->
   if event.state?.turbolinks
