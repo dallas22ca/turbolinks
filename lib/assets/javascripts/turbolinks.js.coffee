@@ -299,11 +299,7 @@ installDocumentReadyPageEventTriggers = ->
 installJqueryAjaxSuccessPageUpdateTrigger = ->
   if typeof jQuery isnt 'undefined'
     jQuery(document).on 'ajaxSuccess', (event, xhr, settings) ->
-      return unless jQuery.trim xhr.responseText
-      triggerEvent 'page:update'
-  else if typeof Zepto isnt 'undefined'
-    Zepto(document).on 'ajaxSuccess', (event, xhr, settings) ->
-      return unless Zepto.trim xhr.responseText
+      return unless xhr && jQuery.trim xhr.responseText
       triggerEvent 'page:update'
 
 installHistoryChangeHandler = (event) ->
